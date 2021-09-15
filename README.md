@@ -1,2 +1,3 @@
-# Tester-MARS
-Quick 32X hardware bugs and errors tester
+Quick 32X Hardware bug and error tester
+
+TODO: better description of this.
