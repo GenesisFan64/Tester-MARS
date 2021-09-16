@@ -120,35 +120,35 @@ SH2_Master:
 		dc.l SH2_M_Entry,CS3|$40000	; Cold PC,SP
 		dc.l SH2_M_Entry,CS3|$40000	; Manual PC,SP
 
-		dc.l SH2_Error			; Illegal instruction
+		dc.l SH2_Error_M		; Illegal instruction
 		dc.l 0				; reserved
-		dc.l SH2_Error			; Invalid slot instruction
+		dc.l SH2_Error_M		; Invalid slot instruction
 		dc.l $20100400			; reserved
 		dc.l $20100420			; reserved
-		dc.l SH2_Error			; CPU address error
-		dc.l SH2_Error			; DMA address error
-		dc.l SH2_Error			; NMI vector
-		dc.l SH2_Error			; User break vector
+		dc.l SH2_Error_M		; CPU address error
+		dc.l SH2_Error_M		; DMA address error
+		dc.l SH2_Error_M		; NMI vector
+		dc.l SH2_Error_M		; User break vector
 
 		dc.l 0,0,0,0,0,0,0,0,0,0	; reserved
 		dc.l 0,0,0,0,0,0,0,0,0
 
-		dc.l SH2_Error,SH2_Error	; Trap vectors
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
+		dc.l SH2_Error_M,SH2_Error_M	; Trap vectors
+		dc.l SH2_Error_M,SH2_Error_M
+		dc.l SH2_Error_M,SH2_Error_M
+		dc.l SH2_Error_M,SH2_Error_M
+		dc.l SH2_Error_M,SH2_Error_M
+		dc.l SH2_Error_M,SH2_Error_M
+		dc.l SH2_Error_M,SH2_Error_M
+		dc.l SH2_Error_M,SH2_Error_M
+		dc.l SH2_Error_M,SH2_Error_M
+		dc.l SH2_Error_M,SH2_Error_M
+		dc.l SH2_Error_M,SH2_Error_M
+		dc.l SH2_Error_M,SH2_Error_M
+		dc.l SH2_Error_M,SH2_Error_M
+		dc.l SH2_Error_M,SH2_Error_M
+		dc.l SH2_Error_M,SH2_Error_M
+		dc.l SH2_Error_M,SH2_Error_M
 
  		dc.l master_irq			; Level 1 IRQ
 		dc.l master_irq			; Level 2 & 3 IRQ's
@@ -170,35 +170,35 @@ SH2_Slave:
 		dc.l SH2_S_Entry,CS3|$3F000	; Cold PC,SP
 		dc.l SH2_S_Entry,CS3|$3F000	; Manual PC,SP
 
-		dc.l SH2_Error			; Illegal instruction
+		dc.l SH2_Error_S		; Illegal instruction
 		dc.l 0				; reserved
-		dc.l SH2_Error			; Invalid slot instruction
+		dc.l SH2_Error_S		; Invalid slot instruction
 		dc.l $20100400			; reserved
 		dc.l $20100420			; reserved
-		dc.l SH2_Error			; CPU address error
-		dc.l SH2_Error			; DMA address error
-		dc.l SH2_Error			; NMI vector
-		dc.l SH2_Error			; User break vector
+		dc.l SH2_Error_S		; CPU address error
+		dc.l SH2_Error_S		; DMA address error
+		dc.l SH2_Error_S		; NMI vector
+		dc.l SH2_Error_S		; User break vector
 
 		dc.l 0,0,0,0,0,0,0,0,0,0	; reserved
 		dc.l 0,0,0,0,0,0,0,0,0
 
-		dc.l SH2_Error,SH2_Error	; Trap vectors
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
-		dc.l SH2_Error,SH2_Error
+		dc.l SH2_Error_S,SH2_Error_S	; Trap vectors
+		dc.l SH2_Error_S,SH2_Error_S
+		dc.l SH2_Error_S,SH2_Error_S
+		dc.l SH2_Error_S,SH2_Error_S
+		dc.l SH2_Error_S,SH2_Error_S
+		dc.l SH2_Error_S,SH2_Error_S
+		dc.l SH2_Error_S,SH2_Error_S
+		dc.l SH2_Error_S,SH2_Error_S
+		dc.l SH2_Error_S,SH2_Error_S
+		dc.l SH2_Error_S,SH2_Error_S
+		dc.l SH2_Error_S,SH2_Error_S
+		dc.l SH2_Error_S,SH2_Error_S
+		dc.l SH2_Error_S,SH2_Error_S
+		dc.l SH2_Error_S,SH2_Error_S
+		dc.l SH2_Error_S,SH2_Error_S
+		dc.l SH2_Error_S,SH2_Error_S
 
  		dc.l slave_irq			; Level 1 IRQ
 		dc.l slave_irq			; Level 2 & 3 IRQ's
@@ -312,9 +312,21 @@ int_s_list:
 ; Noraml error trap
 ; ----------------------------------------------------------------
 
-SH2_Error:
+SH2_Error_M:
+		mov	#_sysreg+comm0,r1
+		mov.w	@r1,r0
+		add	#1,r0
+		mov.w	r0,@r1
+		bra	SH2_Error_M
 		nop
-		bra	SH2_Error
+		align 4
+
+SH2_Error_S:
+		mov	#_sysreg+comm2,r1
+		mov.w	@r1,r0
+		add	#1,r0
+		mov.w	r0,@r1
+		bra	SH2_Error_S
 		nop
 		align 4
 
@@ -954,32 +966,19 @@ TEST_WRITE_ALGNMSTR:
 		align 4
 
 mtest_4:
-		mov	#$12345678,r5		; Test value
-		mov	#TEST_WRITE_DUAL,r1
-		mov	#_sysreg+comm0,r2
-		mov	#$70000,r3
-		mov	r3,r4
-.test_1:
-		mov.l	r5,@r1			; .l .w .b
-		mov.l	@r1,r0
-		mov.w	r4,@r2
-		dt	r4
-		bf	.test_1
-		mov	r3,r4
-.test_2:
-		mov.w	r5,@r1
-		mov.w	@r1,r0
-		mov.w	r4,@r2
-		dt	r4
-		bf	.test_2
-		mov	r3,r4
-.test_3:
-		mov.b	r5,@r1
-		mov.b	@r1,r0
-		mov.w	r4,@r2
-		dt	r4
-		bf	.test_3
-		mov	#0,r0
+		mov	#_sysreg+comm0,r1
+		mov	#_sysreg+comm8,r2
+.wait:		mov.w	@r1,r0
+		cmp/pl	r0
+		bf	.wait
+.next:		mov.w	@r1,r0
+		cmp/pl	r0
+		bf	.exit
+		mov.w	r0,@r2
+		bra	.next
+		nop
+.exit:
+		xor	r0,r0
 		mov.w	r0,@r2
 		bra	master_loop
 		nop
@@ -1021,6 +1020,37 @@ mtest_5:
 		add	#1,r0
 		mov.w	r0,@r1
 		rts
+		nop
+		align 4
+
+; 		mov	#$12345678,r5		; Test value
+; 		mov	#TEST_WRITE_DUAL,r1
+; 		mov	#_sysreg+comm0,r2
+; 		mov	#$70000,r3
+; 		mov	r3,r4
+; .test_1:
+; 		mov.l	r5,@r1			; .l .w .b
+; 		mov.l	@r1,r0
+; 		mov.w	r4,@r2
+; 		dt	r4
+; 		bf	.test_1
+; 		mov	r3,r4
+; .test_2:
+; 		mov.w	r5,@r1
+; 		mov.w	@r1,r0
+; 		mov.w	r4,@r2
+; 		dt	r4
+; 		bf	.test_2
+; 		mov	r3,r4
+; .test_3:
+; 		mov.b	r5,@r1
+; 		mov.b	@r1,r0
+; 		mov.w	r4,@r2
+; 		dt	r4
+; 		bf	.test_3
+; 		mov	#0,r0
+; 		mov.w	r0,@r2
+		bra	master_loop
 		nop
 		align 4
 
@@ -1248,32 +1278,19 @@ stest_3:
 		align 4
 
 stest_4:
-		mov	#$87654321,r5		; Test value
-		mov	#TEST_WRITE_DUAL,r1
-		mov	#_sysreg+comm2,r2
-		mov	#$70000,r3
-		mov	r3,r4
-.test_1:
-		mov.l	r5,@r1			; .l .w .b
-		mov.l	@r1,r0
-		mov.w	r4,@r2
-		dt	r4
-		bf	.test_1
-		mov	r3,r4
-.test_2:
-		mov.w	r5,@r1
-		mov.w	@r1,r0
-		mov.w	r4,@r2
-		dt	r4
-		bf	.test_2
-		mov	r3,r4
-.test_3:
-		mov.b	r5,@r1
-		mov.b	@r1,r0
-		mov.w	r4,@r2
-		dt	r4
-		bf	.test_3
-		mov	#0,r0
+		mov	#_sysreg+comm0,r1
+		mov	#_sysreg+comm10,r2
+.wait:		mov.w	@r1,r0
+		cmp/pl	r0
+		bf	.wait
+.next:		mov.w	@r1,r0
+		cmp/pl	r0
+		bf	.exit
+		mov.w	r0,@r2
+		bra	.next
+		nop
+.exit:
+		xor	r0,r0
 		mov.w	r0,@r2
 		bra	slave_loop
 		nop

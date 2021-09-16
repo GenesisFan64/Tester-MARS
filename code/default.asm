@@ -8,7 +8,7 @@
 ; Variables
 ; ------------------------------------------------------
 
-var_MoveSpd	equ	$4000
+MAX_TESTS	equ	4
 
 ; ====================================================================
 ; ------------------------------------------------------
@@ -38,12 +38,14 @@ var_MoveSpd	equ	$4000
 ; RAM_CamFrame	ds.l 1
 ; RAM_CamTimer	ds.l 1
 ; RAM_CamSpeed	ds.l 1
-RAM_MdlCurrMd	ds.w 1
-RAM_BgCamera	ds.w 1
-RAM_BgCamCurr	ds.w 1
+
 ; RAM_Layout_X	ds.w 1
 ; RAM_Layout_Y	ds.w 1
 RAM_Cursor	ds.l 1
+RAM_MdlCurrMd	ds.w 1
+RAM_BgCamera	ds.w 1
+RAM_BgCamCurr	ds.w 1
+RAM_TestTimer1	ds.w 1
 sizeof_mdglbl	ds.l 0
 		finish
 
@@ -76,6 +78,13 @@ thisCode_Top:
 .inside:	move.w	(vdp_ctrl),d4
 		btst	#bitVint,d4
 		bne.s	.inside
+
+		tst.w	(RAM_TestTimer1).l
+		beq.s	.notmr1
+		sub.w	#1,(RAM_TestTimer1).l
+		move.w	(RAM_TestTimer1).l,d0
+		move.w	d0,(sysmars_reg+comm0).l
+.notmr1:
 
 		move.l	#$7C000003,(vdp_ctrl).l
 		move.w	(RAM_BgCamCurr).l,d0
@@ -128,30 +137,24 @@ thisCode_Top:
 .n_u:
 		btst	#bitJoyDown,d7
 		beq.s	.n_d
-		cmp.b	#6-1,d6
+		cmp.b	#MAX_TESTS-1,d6
 		beq.s	.n_d
 		add.b	#1,d6
 .n_d:
 		move.l	d6,(RAM_Cursor).w
 
+		tst.w	(RAM_TestTimer1).l
+		bne.s	.n_st
 		btst	#bitJoyC,d7
 		beq.s	.n_st
 		move.w	d6,d5
 		and.w	#$FF,d5
 		add	#1,d5
-; 		move.b	d5,d4
-; 		lsl.w	#8,d4
-; 		or.w	d4,d5
 		move.b	d5,(sysmars_reg+comm14).l
-; .wait:
-; 		move.b	(sysmars_reg+comm14).l,d5
-; 		tst.b	d5
-; 		bne.s	.wait
 		move.b	d5,(sysmars_reg+comm15).l
-; .wait2:		move.b	(sysmars_reg+comm15).l,d5
-; 		tst.b	d5
-; 		bne.s	.wait2
-
+		cmp.b	#4,d5
+		bne.s	.n_st
+		move.w	#$400,(RAM_TestTimer1).l
 .n_st:
 
 		lea	str_Cursor(pc),a0
@@ -269,9 +272,7 @@ str_Menu:	dc.b "32X Hardware behavior tester",$A,$A
 		dc.b "  Enable Watchdog interrupt(s)",$A
 		dc.b "  Disable Watchdog interrupt(s)",$A
 		dc.b "  SH2 Misaligned WORD/LONG crash",$A
-		dc.b "  SH2 Dual-write/read crash (???)",$A
-		dc.b "  SH2 Delayed jump/call crash (???)",$A
-		dc.b "  PWM $3FF sound limit",$A
+		dc.b "  SH2*Desync'd communication with MD",$A
 ; 		dc.b "  ???",$A
 ; 		dc.b $A
 ; 		dc.b "  ???",$A
